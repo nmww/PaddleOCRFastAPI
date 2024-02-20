@@ -1,19 +1,7 @@
 edition: 1.0.0
 name: my-framework-app
 access: default
-version: "3"
-
 services:
-
-  paddleocrfastapi:
-    container_name: paddleocrfastapi # Custom Container Name
-    image: paddleocrfastapi:<your_tag> # Customized Image Name & Label in Step 2
-    environment:
-      - TZ=Asia/Hong_Kong
-    ports:
-     - 8000:8000 # Customize the service exposure port, 8000 is the default FastAPI port, do not modify
-    restart: unless-stopped
-    
   framework:
     component: fc
     props:
@@ -21,7 +9,7 @@ services:
       service:
         name: serverless-devs-application
       function:
-        name: PaddleOCRFastAPI-hyqj
+        name: PaddleOCRFastAPI-g3ga
         description: Initialize
         runtime: custom
         environmentVariables:
@@ -53,4 +41,12 @@ services:
               - DELETE
               - HEAD
               - PATCH
-    
+
+  paddleocrfastapi:
+    container_name: paddleocrfastapi # Custom Container Name
+    image: paddleocrfastapi:<your_tag> # Customized Image Name & Label in Step 2
+    environment:
+      - TZ=Asia/Hong_Kong
+    ports:
+     - 8000:8000 # Customize the service exposure port, 8000 is the default FastAPI port, do not modify
+    restart: unless-stopped
